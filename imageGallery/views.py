@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import GalleryImage,Tags
 from django.core.paginator import Paginator
+from django.http.response import Http404
 
 
 # Create your views here.
@@ -16,3 +17,16 @@ def gallery(request):
         'page_obj': page_obj
     }
     return render(request,'index.html',context)
+
+
+def specificImg(request,pk):
+    try:
+        spec = GalleryImage.objects.get(pk=pk)
+    except:
+        raise Http404
+
+    context = {
+        'specImage': spec
+    }
+
+    return render(request, 'specific.html', context)
