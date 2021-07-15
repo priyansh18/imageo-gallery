@@ -4,28 +4,48 @@ Gallery
 {% endblock %}
 {% block content %}
 
-<div class="row images">
-  {% for pic in page_obj.object_list %}
-  <div class="col-lg-5 col-md-5 col-sm-5 col-12">
-    <div class="card">
-      <div class="card-image">
-        <img src="{{pic.image.url}}">
-        <span class="card-title"></span>
-      </div>
-      <div class="card-content">
-        <p>Published on : {{pic.uploaded_at}}</p>
-      </div>
-      <div class="card-tags">
-        {% for tag in pic.tags.all %}
-        <p>#<strong>{{tag}}</strong></p>
-        {% endfor %}
-      </div>
-      <div class="card-action">
-        <h3><a href="{% url 'specificImg' pic.pk %}">Visit</a></h3>
+<div class="container">
+  <div class="row images">
+    <div class="col-lg-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header" style="text-align: center;">
+          <strong>Tags</strong>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a href="{% url 'gallery' %}">All</a></li>
+          {% for imageTag in mytags %}
+          <li class="list-group-item"><a href="{% url 'gallery' %}?tag={{imageTag}}">{{imageTag}}</a></li>
+          {% endfor %}
+          <a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1">Add Image</a>
+        </ul>
       </div>
     </div>
+    <div class="col-lg-8">
+      <div class="row">
+        {% for pic in page_obj.object_list %}
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{pic.image.url}}">
+              <span class="card-title"></span>
+            </div>
+            <div class="card-content">
+              <p>Published on : {{pic.uploaded_at}}</p>
+            </div>
+            <div class="card-tags">
+              <p>#<strong>{{pic.tags}}</strong></p>
+            </div>
+            <div class="card-action">
+              <h3><a href="{% url 'specificImg' pic.pk %}">Visit</a></h3>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <h3>No Images Found.</h3>
+        {% endfor %}
+      </div>
+    </div>  
   </div>
-  {% endfor %}
 </div>
 
 <nav aria-label="Page navigation example">

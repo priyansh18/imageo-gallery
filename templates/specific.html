@@ -7,6 +7,7 @@ Specific image
 {% block content %}
 
 <div class="row singleImage">
+  <a href="{% url 'gallery' %}" class="btn btn-dark btn-block btn-sm m-1">Go Back</a>
   <div class="col-8">
     <div class="card">
       <div class="card-image">
@@ -15,6 +16,9 @@ Specific image
       </div>
       <div class="card-content">
         <p>Published on : {{specImage.uploaded_at}}</p>
+      </div>
+      <div class="card-tags">
+        <p>#<strong>{{specImage.tags}}</strong></p>
       </div>
       <div class="buttons">
         <button class="btn btn-primary" id="rotateClk">Rotate Clockwise</button>

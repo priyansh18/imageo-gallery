@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import SET_NULL
 
 # Create your models here.
 
@@ -10,7 +11,7 @@ class Tags(models.Model):
 
 
 class GalleryImage(models.Model):
-    tags = models.ManyToManyField('Tags',blank=True)
+    tags = models.ForeignKey('Tags',blank=True,null=True,on_delete=SET_NULL)
     image = models.ImageField(upload_to='media')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
