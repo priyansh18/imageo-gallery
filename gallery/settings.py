@@ -37,9 +37,9 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = 'django-insecure-_y!j!6=9jdw#dse7n&gqrcmiz%f*ku2)kw2puc6-*4&n(ql-t%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['imageo-gallery.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -137,6 +138,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
