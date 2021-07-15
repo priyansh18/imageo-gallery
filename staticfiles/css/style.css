@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+.brand-logo {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  padding: 10px;
+  margin: 40px;
+  background-color: ghostwhite;
+  border-radius: 25px;
+}
+
+.card-image {
+  height: auto;
+  border-radius: 25px;
+}
+
+.card-image img {
+  width: 300px;
+  height: 280px;
+}
+
+.card .card-content {
+  padding: 15px;
+}
+
+.card .card-tags {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card .card-tags p {
+  background: skyblue;
+  color: black;
+  display: inline;
+  padding: 10px;
+}
+
+.card .card-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.singleImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.list-group-item a{
+  text-decoration: none;
+  color: black;
+}
